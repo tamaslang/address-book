@@ -31,16 +31,20 @@ public class AddressBookServiceImpl implements AddressBookService {
 
     @Override
     public int howManyDaysOlderOneThanTheOtherByFirstName(String oneFirstName, String theOtherFirstName) {
-        Person onePerson = addressBook.getFirstPersonByFirstName(oneFirstName);
+        Person onePerson = addressBook.getFirstPersonWithMatchingFirstName(oneFirstName);
         if (onePerson == null) {
             throw new PersonNotFoundException(oneFirstName);
         }
 
-        Person theOtherPerson = addressBook.getFirstPersonByFirstName(theOtherFirstName);
+        Person theOtherPerson = addressBook.getFirstPersonWithMatchingFirstName(theOtherFirstName);
         if (theOtherPerson == null) {
             throw new PersonNotFoundException(theOtherFirstName);
         }
 
+        return howManyDaysOlderOneThanTheOther(onePerson, theOtherPerson);
+    }
+
+    public int howManyDaysOlderOneThanTheOther(Person onePerson, Person theOtherPerson) {
         return Days.daysBetween(theOtherPerson.getDateOfBirth(), onePerson.getDateOfBirth()).getDays();
     }
 

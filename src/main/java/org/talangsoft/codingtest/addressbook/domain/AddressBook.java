@@ -13,5 +13,5 @@ public interface AddressBook {
 
     List<Person> getAllPersons();
 
-    public Person getFirstPersonByFirstName(String firstName);
+    public Person getFirstPersonWithMatchingFirstName(String firstName);
 }

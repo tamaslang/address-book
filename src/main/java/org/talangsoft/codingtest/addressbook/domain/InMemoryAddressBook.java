@@ -41,7 +41,7 @@ public class InMemoryAddressBook implements AddressBook {
     }
 
     @Override
-    public Person getFirstPersonByFirstName(String firstName) {
+    public Person getFirstPersonWithMatchingFirstName(String firstName) {
         if (persons.isEmpty()) {
             return null;
         }
