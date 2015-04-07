@@ -13,10 +13,6 @@ import org.talangsoft.codingtest.addressbook.fileinput.PersonTextParser;
 
 import java.util.List;
 
-
-/**
- * Created by admin on 07/04/15.
- */
 @Configuration
 @ComponentScan({"org.talangsoft.codingtest.addressbook"})
 public class AddressBookAppContext implements ResourceLoaderAware {

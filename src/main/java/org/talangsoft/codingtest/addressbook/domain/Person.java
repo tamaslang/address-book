@@ -1,5 +1,7 @@
 package org.talangsoft.codingtest.addressbook.domain;
 
+import com.google.common.base.MoreObjects;
+import com.google.common.base.Objects;
 import org.joda.time.LocalDate;
 
 public class Person {
@@ -48,5 +50,14 @@ public class Person {
 
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this.getClass())
+                .add("firstName", firstName)
+                .add("lastName", lastName)
+                .add("gender",gender)
+                .add("dateOfBirth",dateOfBirth).toString();
     }
 }
