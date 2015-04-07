@@ -1,6 +1,7 @@
 package org.talangsoft.codingtest.addressbook.service;
 
 import org.talangsoft.codingtest.addressbook.domain.Gender;
+import org.talangsoft.codingtest.addressbook.domain.Person;
 
 /*
     Service interface methods
@@ -13,4 +14,12 @@ public interface AddressBookService {
      * @return the number of persons with the given gender
      */
    long countNrOfPersonsWithGender(Gender gender);
+
+
+    /**
+     * Get the oldest person from the addressbook
+     *
+     * @return the oldest person
+     */
+    Person getOldestPerson();
 }

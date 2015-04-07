@@ -36,10 +36,8 @@ public class CountNumberOfMalesTest {
         assertNotNull(service);
     }
 
-
-
     @Test
-    public void countNrOfMalesForEmptyDB(){
+    public void countNrOfMalesForEmpty(){
         assertEquals(0, service.countNrOfPersonsWithGender(Gender.MALE));
     }
 
