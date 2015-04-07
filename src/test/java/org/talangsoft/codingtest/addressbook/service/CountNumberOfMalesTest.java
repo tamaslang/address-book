@@ -1,39 +1,13 @@
 package org.talangsoft.codingtest.addressbook.service;
 
 import org.joda.time.LocalDate;
-import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.talangsoft.codingtest.addressbook.domain.AddressBook;
 import org.talangsoft.codingtest.addressbook.domain.Gender;
 import org.talangsoft.codingtest.addressbook.domain.Person;
-import org.talangsoft.codingtest.addressbook.test.AddressBookTestContext;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = AddressBookTestContext.class)
-public class CountNumberOfMalesTest {
-
-    @Autowired
-    private AddressBookService service;
-
-    @Autowired
-    private AddressBook addressBook;
-
-    @Before
-    public void setUp() {
-        addressBook.clear();
-    }
-
-    @Test
-    public void serviceSetupTest() {
-        assertNotNull(service);
-    }
+public class CountNumberOfMalesTest extends AddressBookServiceTester{
 
     @Test
     public void countNrOfMalesForEmpty() {
