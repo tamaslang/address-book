@@ -29,4 +29,9 @@ public class InMemoryAddressBook implements AddressBook{
     public List<Person> getAllPersons() {
         return persons;
     }
+
+    @Override
+    public void clear() {
+        persons.clear();
+    }
 }

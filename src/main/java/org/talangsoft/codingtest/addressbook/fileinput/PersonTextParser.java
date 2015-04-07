@@ -1,4 +1,4 @@
-package org.talangsoft.codingtest.addressbook.context;
+package org.talangsoft.codingtest.addressbook.fileinput;
 
 import com.google.common.base.Splitter;
 import org.joda.time.DateTime;
