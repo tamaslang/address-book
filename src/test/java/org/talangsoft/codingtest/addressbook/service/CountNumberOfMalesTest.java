@@ -26,6 +26,6 @@ public class CountNumberOfMalesTest {
 
     @Test
     public void countNrOfMales(){
-        assertEquals(0, service.countNrOfPersonsWithGender(Gender.MALE));
+        assertEquals(3, service.countNrOfPersonsWithGender(Gender.MALE));
     }
 }

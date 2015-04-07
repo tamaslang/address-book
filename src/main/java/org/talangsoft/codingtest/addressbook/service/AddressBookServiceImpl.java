@@ -1,12 +1,18 @@
 package org.talangsoft.codingtest.addressbook.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.talangsoft.codingtest.addressbook.domain.AddressBook;
 import org.talangsoft.codingtest.addressbook.domain.Gender;
 
 @Service("addressBookService")
 public class AddressBookServiceImpl implements AddressBookService {
+
+    @Autowired
+    private AddressBook addressBook;
+
     @Override
-    public int countNrOfPersonsWithGender(Gender gender) {
-        return 0;
+    public long countNrOfPersonsWithGender(Gender gender) {
+        return addressBook.getAllPersons().stream().filter(p -> p.getGender() == gender).count();
     }
 }

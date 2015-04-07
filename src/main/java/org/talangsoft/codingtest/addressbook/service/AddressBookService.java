@@ -8,7 +8,9 @@ import org.talangsoft.codingtest.addressbook.domain.Gender;
 public interface AddressBookService {
     /**
      * Count the nuber of persons with the given gender
+     *
+     * @param gender the gender to count persons with
      * @return the number of persons with the given gender
      */
-   int countNrOfPersonsWithGender(Gender gender);
+   long countNrOfPersonsWithGender(Gender gender);
 }
