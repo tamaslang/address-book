@@ -19,6 +19,7 @@ public class AddressBookApp {
         System.out.println("Address Book coding task");
         System.out.println("DATA:");
         database.getAllPersons().stream().forEach(System.out::println);
+        System.out.println("Q&A:");
         System.out.print("1. How many males are in the address book? ");
         System.out.println(service.countNrOfPersonsWithGender(Gender.MALE));
         System.out.print("2. Who is the oldest person in the address book? ");
