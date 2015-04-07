@@ -17,7 +17,10 @@ import java.util.List;
 @ComponentScan({"org.talangsoft.codingtest.addressbook"})
 public class AddressBookAppContext implements ResourceLoaderAware {
 
-    private DateTimeFormatter fmt = DateTimeFormat.forPattern("dd/MM/yy");
+    public static final String DATE_OF_BIRTH_FORMAT = "dd/MM/yy";
+    public static final String ADDRESS_BOOK_LOCATION = "classpath:AddressBook";
+
+    private DateTimeFormatter fmt = DateTimeFormat.forPattern(DATE_OF_BIRTH_FORMAT);
     private ResourceLoader resourceLoader;
 
     public void setResourceLoader(ResourceLoader resourceLoader) {
@@ -26,7 +29,7 @@ public class AddressBookAppContext implements ResourceLoaderAware {
 
     @Bean
     AddressBook addressBook() throws Exception {
-        List<String> addressBookLines = TextFileResourceLoader.loadLines(resourceLoader, "classpath:AddressBook");
+        List<String> addressBookLines = TextFileResourceLoader.loadLines(resourceLoader, ADDRESS_BOOK_LOCATION);
         AddressBook addressBook = new InMemoryAddressBook(PersonTextParser.parsePersonLines(addressBookLines));
         return addressBook;
     }
