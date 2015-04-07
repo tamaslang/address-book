@@ -22,4 +22,12 @@ public interface AddressBookService {
      * @return the oldest person
      */
     Person getOldestPerson();
+
+
+    /**
+     * Get the difference in days between two person
+     *
+     * @return the number of days between the two person
+     */
+    int howManyDaysOlderOneThanTheOtherByFirstName(String one, String theOther);
 }

@@ -8,4 +8,6 @@ public interface AddressBook {
     void addPersons(List<Person> persons);
     void clear();
     List<Person> getAllPersons();
+
+    public Person getFirstPersonByFirstName(String firstName);
 }

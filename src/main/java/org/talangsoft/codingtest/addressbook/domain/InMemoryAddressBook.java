@@ -39,4 +39,12 @@ public class InMemoryAddressBook implements AddressBook{
     public boolean isEmpty() {
         return persons.isEmpty();
     }
+
+    @Override
+    public Person getFirstPersonByFirstName(String firstName){
+        if(persons.isEmpty()){
+            return null;
+        }
+        return persons.stream().filter(p -> p.getFirstName().equals(firstName)).findFirst().orElse(null);
+    }
 }
