@@ -6,6 +6,8 @@ import org.talangsoft.codingtest.addressbook.domain.AddressBook;
 import org.talangsoft.codingtest.addressbook.domain.Gender;
 import org.talangsoft.codingtest.addressbook.domain.Person;
 
+import java.util.Comparator;
+
 @Service("addressBookService")
 public class AddressBookServiceImpl implements AddressBookService {
 
@@ -19,6 +21,10 @@ public class AddressBookServiceImpl implements AddressBookService {
 
     @Override
     public Person getOldestPerson() {
-        return null;
+        if(addressBook.isEmpty()){
+            return null;
+        }
+        final Comparator<Person> ageComparator = (p1 , p2) -> Long.compare(p1.getDateOfBirth().getMillis(),p2.getDateOfBirth().getMillis());
+        return addressBook.getAllPersons().stream().min(ageComparator).get();
     }
 }

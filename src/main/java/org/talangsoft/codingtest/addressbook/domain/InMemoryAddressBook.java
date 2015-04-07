@@ -34,4 +34,9 @@ public class InMemoryAddressBook implements AddressBook{
     public void clear() {
         persons.clear();
     }
+
+    @Override
+    public boolean isEmpty() {
+        return persons.isEmpty();
+    }
 }
