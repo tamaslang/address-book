@@ -3,7 +3,7 @@ package org.talangsoft.codingtest.addressbook.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InMemoryAddressBook implements AddressBook{
+public class InMemoryAddressBook implements AddressBook {
 
     List<Person> persons = new ArrayList<>();
 
@@ -17,7 +17,7 @@ public class InMemoryAddressBook implements AddressBook{
 
     @Override
     public void addPerson(Person person) {
-      persons.add(person);
+        persons.add(person);
     }
 
     @Override
@@ -41,8 +41,8 @@ public class InMemoryAddressBook implements AddressBook{
     }
 
     @Override
-    public Person getFirstPersonByFirstName(String firstName){
-        if(persons.isEmpty()){
+    public Person getFirstPersonByFirstName(String firstName) {
+        if (persons.isEmpty()) {
             return null;
         }
         return persons.stream().filter(p -> p.getFirstName().equals(firstName)).findFirst().orElse(null);

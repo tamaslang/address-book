@@ -19,19 +19,18 @@ import java.util.List;
  */
 @Configuration
 @ComponentScan({"org.talangsoft.codingtest.addressbook"})
-public class AddressBookAppContext implements ResourceLoaderAware{
+public class AddressBookAppContext implements ResourceLoaderAware {
 
     private DateTimeFormatter fmt = DateTimeFormat.forPattern("dd/MM/yy");
+    private ResourceLoader resourceLoader;
 
     public void setResourceLoader(ResourceLoader resourceLoader) {
         this.resourceLoader = resourceLoader;
     }
 
-    private ResourceLoader resourceLoader;
-
     @Bean
-    AddressBook addressBook() throws Exception{
-        List<String> addressBookLines = TextFileResourceLoader.loadLines(resourceLoader,"classpath:AddressBook");
+    AddressBook addressBook() throws Exception {
+        List<String> addressBookLines = TextFileResourceLoader.loadLines(resourceLoader, "classpath:AddressBook");
         AddressBook addressBook = new InMemoryAddressBook(PersonTextParser.parsePersonLines(addressBookLines));
         return addressBook;
     }

@@ -1,6 +1,6 @@
 package org.talangsoft.codingtest.addressbook.service;
 
-import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,9 +12,7 @@ import org.talangsoft.codingtest.addressbook.domain.Gender;
 import org.talangsoft.codingtest.addressbook.domain.Person;
 import org.talangsoft.codingtest.addressbook.test.AddressBookTestContext;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -28,53 +26,53 @@ public class OldestPersonTest {
     private AddressBook addressBook;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         addressBook.clear();
     }
 
     @Test
-    public void serviceSetupTest(){
+    public void serviceSetupTest() {
         assertNotNull(service);
     }
 
     @Test
-    public void getOldestPersonForEmpty(){
+    public void getOldestPersonForEmpty() {
         assertNull(service.getOldestPerson());
     }
 
     @Test
-    public void getOldestPersonFor1Person(){
-        Person onlyPerson = new Person("Sarah","Stone",Gender.FEMALE,new DateTime(1977,11,11,11,11,11));
+    public void getOldestPersonFor1Person() {
+        Person onlyPerson = new Person("Sarah", "Stone", Gender.FEMALE, new LocalDate(1977, 11, 11));
         addressBook.addPerson(onlyPerson);
-        assertEquals(onlyPerson,service.getOldestPerson());
+        assertEquals(onlyPerson, service.getOldestPerson());
     }
 
     @Test
-    public void getOldestPersonFor2PeopleOlderAddedFirst(){
-        Person older = new Person("Sarah","Stone",Gender.FEMALE,new DateTime(1977,11,11,11,11,11));
-        Person younger = new Person("Gemma","Lane",Gender.FEMALE,new DateTime(1980,11,11,11,11,11));
+    public void getOldestPersonFor2PeopleOlderAddedFirst() {
+        Person older = new Person("Sarah", "Stone", Gender.FEMALE, new LocalDate(1977, 11, 11));
+        Person younger = new Person("Gemma", "Lane", Gender.FEMALE, new LocalDate(1980, 11, 11));
         addressBook.addPerson(older);
         addressBook.addPerson(younger);
-        assertEquals(older,service.getOldestPerson());
+        assertEquals(older, service.getOldestPerson());
     }
 
     @Test
-    public void getOldestPersonFor2PeopleYoungetAddedFirst(){
-        Person older = new Person("Sarah","Stone",Gender.FEMALE,new DateTime(1977,11,11,11,11,11));
-        Person younger = new Person("Gemma","Lane",Gender.FEMALE,new DateTime(1980,11,11,11,11,11));
+    public void getOldestPersonFor2PeopleYoungetAddedFirst() {
+        Person older = new Person("Sarah", "Stone", Gender.FEMALE, new LocalDate(1977, 11, 11));
+        Person younger = new Person("Gemma", "Lane", Gender.FEMALE, new LocalDate(1980, 11, 11));
         addressBook.addPerson(younger);
         addressBook.addPerson(older);
 
-        assertEquals(older,service.getOldestPerson());
+        assertEquals(older, service.getOldestPerson());
     }
 
     @Test
-    public void getOldestPersonFor2PeopleSameAge(){
-        Person first = new Person("Sarah","Stone",Gender.FEMALE,new DateTime(1977,11,11,11,11,11));
-        Person second = new Person("Gemma","Lane",Gender.FEMALE,new DateTime(1977,11,11,11,11,11));
+    public void getOldestPersonFor2PeopleSameAge() {
+        Person first = new Person("Sarah", "Stone", Gender.FEMALE, new LocalDate(1977, 11, 11));
+        Person second = new Person("Gemma", "Lane", Gender.FEMALE, new LocalDate(1977, 11, 11));
         addressBook.addPerson(first);
         addressBook.addPerson(second);
 
-        assertEquals(first,service.getOldestPerson());
+        assertEquals(first, service.getOldestPerson());
     }
 }

@@ -1,17 +1,17 @@
 package org.talangsoft.codingtest.addressbook.domain;
 
-import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
 
 public class Person {
     String firstName;
     String lastName;
     Gender gender;
-    DateTime dateOfBirth;
+    LocalDate dateOfBirth;
 
     public Person() {
     }
 
-    public Person(String firstName, String lastName,  Gender gender,DateTime dateOfBirth) {
+    public Person(String firstName, String lastName, Gender gender, LocalDate dateOfBirth) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
@@ -42,11 +42,11 @@ public class Person {
         this.gender = gender;
     }
 
-    public DateTime getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(DateTime dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 }

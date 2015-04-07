@@ -1,6 +1,6 @@
 package org.talangsoft.codingtest.addressbook.service;
 
-import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,7 +14,6 @@ import org.talangsoft.codingtest.addressbook.test.AddressBookTestContext;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = AddressBookTestContext.class)
@@ -26,60 +25,60 @@ public class GetHowManyDaysOlderTest {
     private AddressBook addressBook;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         addressBook.clear();
     }
 
     @Test
-    public void serviceSetupTest(){
+    public void serviceSetupTest() {
         assertNotNull(service);
     }
 
     @Test(expected = PersonNotFoundException.class)
-    public void howManyDaysOlderEmptyDBTest(){
+    public void howManyDaysOlderEmptyDBTest() {
         int daysOlder = service.howManyDaysOlderOneThanTheOtherByFirstName("Bill", "Paul");
-        assertEquals(0,daysOlder);
+        assertEquals(0, daysOlder);
     }
 
     @Test(expected = PersonNotFoundException.class)
-    public void howManyDaysOlderPersonOneNotExists(){
-        addressBook.addPerson(new Person("Sarah","Stone", Gender.FEMALE,new DateTime(1977,11,11,11,11,11)));
+    public void howManyDaysOlderPersonOneNotExists() {
+        addressBook.addPerson(new Person("Sarah", "Stone", Gender.FEMALE, new LocalDate(1977, 11, 11)));
         int daysOlder = service.howManyDaysOlderOneThanTheOtherByFirstName("Bill", "Sarah");
-        assertEquals(0,daysOlder);
+        assertEquals(0, daysOlder);
     }
 
 
     @Test(expected = PersonNotFoundException.class)
-    public void howManyDaysOlderPersonTwoNotExists(){
-        addressBook.addPerson(new Person("Sarah","Stone", Gender.FEMALE,new DateTime(1977,11,11,11,11,11)));
+    public void howManyDaysOlderPersonTwoNotExists() {
+        addressBook.addPerson(new Person("Sarah", "Stone", Gender.FEMALE, new LocalDate(1977, 11, 11)));
         int daysOlder = service.howManyDaysOlderOneThanTheOtherByFirstName("Sarah", "Bill");
-        assertEquals(0,daysOlder);
+        assertEquals(0, daysOlder);
     }
 
     @Test
-    public void howManyDaysOlderSameBirthday(){
-        addressBook.addPerson(new Person("Sarah","Stone", Gender.FEMALE,new DateTime(1977,11,11,11,11,11)));
-        addressBook.addPerson(new Person("Gemma","Lane",Gender.FEMALE,new DateTime(1977,11,11,11,11,11)));
+    public void howManyDaysOlderSameBirthday() {
+        addressBook.addPerson(new Person("Sarah", "Stone", Gender.FEMALE, new LocalDate(1977, 11, 11)));
+        addressBook.addPerson(new Person("Gemma", "Lane", Gender.FEMALE, new LocalDate(1977, 11, 11)));
 
         int daysOlder = service.howManyDaysOlderOneThanTheOtherByFirstName("Sarah", "Gemma");
-        assertEquals(0,daysOlder);
+        assertEquals(0, daysOlder);
     }
 
     @Test
-    public void howManyDaysOlderFirstIsOlderBirthday(){
-        addressBook.addPerson(new Person("Sarah","Stone", Gender.FEMALE,new DateTime(1976,11,11,11,11,11)));
-        addressBook.addPerson(new Person("Gemma","Lane",Gender.FEMALE,new DateTime(1977,11,11,11,11,11)));
+    public void howManyDaysOlderFirstIsOlderBirthday() {
+        addressBook.addPerson(new Person("Sarah", "Stone", Gender.FEMALE, new LocalDate(1976, 11, 11)));
+        addressBook.addPerson(new Person("Gemma", "Lane", Gender.FEMALE, new LocalDate(1977, 11, 11)));
 
         int daysOlder = service.howManyDaysOlderOneThanTheOtherByFirstName("Gemma", "Sarah");
-        assertEquals(365,daysOlder);
+        assertEquals(365, daysOlder);
     }
 
     @Test
-    public void howManyDaysOlderFirstIsYoungerBirthday(){
-        addressBook.addPerson(new Person("Sarah","Stone", Gender.FEMALE,new DateTime(1976,11,11,11,11,11)));
-        addressBook.addPerson(new Person("Gemma","Lane",Gender.FEMALE,new DateTime(1977,11,11,11,11,11)));
+    public void howManyDaysOlderFirstIsYoungerBirthday() {
+        addressBook.addPerson(new Person("Sarah", "Stone", Gender.FEMALE, new LocalDate(1976, 11, 11)));
+        addressBook.addPerson(new Person("Gemma", "Lane", Gender.FEMALE, new LocalDate(1977, 11, 11)));
 
         int daysOlder = service.howManyDaysOlderOneThanTheOtherByFirstName("Sarah", "Gemma");
-        assertEquals(-365,daysOlder);
+        assertEquals(-365, daysOlder);
     }
 }

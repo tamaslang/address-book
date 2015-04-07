@@ -6,7 +6,7 @@ import org.talangsoft.codingtest.addressbook.service.AddressBookService;
 
 public class AddressBookApp {
 
-    public static void main(String [] args){
+    public static void main(String[] args) {
         final AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
         applicationContext.register(AddressBookAppContext.class);
         applicationContext.refresh();

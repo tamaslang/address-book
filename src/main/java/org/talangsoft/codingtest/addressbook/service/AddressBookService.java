@@ -13,7 +13,7 @@ public interface AddressBookService {
      * @param gender the gender to count persons with
      * @return the number of persons with the given gender
      */
-   long countNrOfPersonsWithGender(Gender gender);
+    long countNrOfPersonsWithGender(Gender gender);
 
 
     /**

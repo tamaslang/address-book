@@ -22,22 +22,26 @@ public class AddressBookServiceImpl implements AddressBookService {
 
     @Override
     public Person getOldestPerson() {
-        if(addressBook.isEmpty()){
+        if (addressBook.isEmpty()) {
             return null;
         }
-        final Comparator<Person> ageComparator = (p1 , p2) -> Long.compare(p1.getDateOfBirth().getMillis(),p2.getDateOfBirth().getMillis());
+        final Comparator<Person> ageComparator = (p1, p2) -> p1.getDateOfBirth().compareTo(p2.getDateOfBirth());
         return addressBook.getAllPersons().stream().min(ageComparator).get();
     }
 
     @Override
     public int howManyDaysOlderOneThanTheOtherByFirstName(String oneFirstName, String theOtherFirstName) {
         Person onePerson = addressBook.getFirstPersonByFirstName(oneFirstName);
-        if(onePerson == null) {throw new PersonNotFoundException(oneFirstName);}
+        if (onePerson == null) {
+            throw new PersonNotFoundException(oneFirstName);
+        }
 
         Person theOtherPerson = addressBook.getFirstPersonByFirstName(theOtherFirstName);
-        if(theOtherPerson == null) {throw new PersonNotFoundException(theOtherFirstName);}
+        if (theOtherPerson == null) {
+            throw new PersonNotFoundException(theOtherFirstName);
+        }
 
-        return Days.daysBetween(theOtherPerson.getDateOfBirth().toLocalDate(), onePerson.getDateOfBirth().toLocalDate()).getDays();
+        return Days.daysBetween(theOtherPerson.getDateOfBirth(), onePerson.getDateOfBirth()).getDays();
     }
 
 
