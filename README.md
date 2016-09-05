@@ -1,4 +1,4 @@
-# Gumtree coding challenge
+# Coding Exercise
 
 ## The task
 
